@@ -1,0 +1,13 @@
+(function ($) {
+    function give_single_tabs() {
+        let $tabs = $("#give-form-single-tab");
+        if ($tabs.length > 0) {
+            $tabs.tabs();
+        }
+    }
+    $(document).ready(
+        function () {
+            give_single_tabs();
+        }
+    )
+})(jQuery);
