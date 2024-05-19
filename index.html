@@ -37,28 +37,53 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/logo/cpai-logo.png" alt="">&nbsp;
-        <h1 class="sitename">Cerebral Palsy Association Of India</h1>
+        <!-- <h1 class="sitename">Cerebral Palsy Association Of India</h1> -->
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html#hero" class="">Home</a></li>
           <!-- <li><a href="index.html#about">About</a></li> -->
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>About Us</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Annual Report 2022-2023</a></li>
-              <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <!-- <li><a href="#">Annual Report 2022-2023</a></li> -->
+              <li><a href="#">History Background</a></li>
+              <li><a href="#">Organizational Philosophy</a></li>
+              <li class="dropdown"><a href="#"><span>Branches</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                  <li><a href="#">Mumbai</a></li>
+                  <li><a href="#">Vasai</a></li>
+                  <li><a href="#">Bhopal</a></li>
+                  <li><a href="#">Lucknow</a></li>
                 </ul>
-              </li> -->
-              <li><a href="#">Annual Report 2022-2023</a></li>
-              <!-- <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li> -->
+              </li>
+              <li><a href="#">Sectors</a></li>
+              <li><a href="#">Vision / Mission</a></li>
+              <li><a href="#">Objectives</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <!-- <li><a href="#">Annual Report 2022-2023</a></li> -->
+              <li><a href="#">Swanama Project</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Social Empowering Initiatives</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <!-- <li><a href="#">Annual Report 2022-2023</a></li> -->
+              <li><a href="#">Government Policies</a></li>
+              <li><a href="#">Societal Awareness Programs</a></li>
+              <li><a href="#">Shikshan Project</a></li>
+              <li><a href="#">Orthopedic Camps</a></li>
+              <li><a href="#">Livelihood Programs</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <!-- <li><a href="#">Annual Report 2022-2023</a></li> -->
+              <li><a href="#">Bus Services</a></li>
+              <li><a href="#">Mid Day Meals</a></li>
+              <li><a href="#">Ration Distribution Drive</a></li>
             </ul>
           </li>
           <li><a href="index.html#services">Teams</a></li>
@@ -70,7 +95,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Donate Now</a>
+      <a class="btn-getstarted" href="index.html#about">Donate</a>
 
     </div>
   </header>
@@ -78,7 +103,7 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <!-- <section id="hero" class="hero section">
       <div class="hero-bg">
         <img src="assets/img/hero-bg-light.webp" alt="">
       </div>
@@ -87,14 +112,69 @@
           <h1 data-aos="fade-up" class="">Welcome to <span>CPAI</span></h1>
           <p data-aos="fade-up" data-aos-delay="100" class="">Empowering Abilities, Embracing Differences, and Inspiring Change<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <!-- <a href="#about" class="btn-get-started">Get Started</a> -->
-            <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+            
           </div>
           <img src="assets/img/hero img.jpg" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
 
-    </section><!-- /Hero Section -->
+    </section> -->
+    <section class="hero">
+      <div class="slides" id="slides">
+          <div class="slide " style="background-image: url('assets/img/shik');"></div>
+          <div class="slide" style="background-image: url('assets/img/bgimage.jpg');"></div>
+          <div class="slide" style="background-image: url('assets/img/logo.png');"></div>
+      </div>
+      <div class="hero-text">
+          <h1>Welcome to CPAI</h1>
+          <p>Empowering Abilities, Embracing Differences, and Inspiring Change</p>
+      </div>
+      <div class="nav-buttons">
+          <span id="prev">&#10094;</span>
+          <span id="next">&#10095;</span>
+      </div>
+  </section>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.getElementById('next').addEventListener('click', () => {
+        nextSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+        prevSlide();
+    });
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    // Auto slide
+    setInterval(() => {
+        nextSlide();
+    }, 5000); // Change image every 5 seconds
+
+    showSlide(currentSlide);
+</script>
+
+    <!-- /Hero Section -->
 
     <!-- Featured Services Section -->
     <!-- <section id="featured-services" class="featured-services section">
