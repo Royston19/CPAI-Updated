@@ -293,43 +293,48 @@
         measurementId: "G-K10JS2Q8XR",
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getFirestore(app);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-    async function fetchData() {
-        const events = [];
-        try {
-            const querySnapshot = await getDocs(collection(db, "Teams"));
-            querySnapshot.forEach((doc) => {
-                events.push(doc.data());
-            });
+async function fetchData() {
+    const events = [];
+    try {
+        const querySnapshot = await getDocs(collection(db, "Teams"));
+        querySnapshot.forEach((doc) => {
+            events.push(doc.data());
+        });
 
-            const teamContainer = document.getElementById("teamContainer");
-            events.forEach((e) => {
-                const eventDiv = document.createElement("div");
-                eventDiv.innerHTML = `
-                <section class="team-section ">
-          <h2>${e.role}</h2>
-          <div class="team">
-            <!-- Team member for Branch 1 -->
-            <div class="team-member">
-              <img style="object-fit:cover height:15rem;" src="${e.image}" alt="Team Member 1">
-              <h3>${e.title}</h3>
-              <p>${e.subDes}</p>
-              <p>${e.descripton}</p>
-            </div>            
-          </div>
-        </section>`;
-                teamContainer.appendChild(eventDiv);
-            });
-        } catch (error) {
-            console.error("Error fetching events: ", error);
-        }
+        const teamContainer = document.getElementById("teamContainer");
+        const roleSections = {};
+
+        events.forEach((e) => {
+            if (!roleSections[e.role]) {
+                const section = document.createElement("section");
+                section.classList.add("team-section");
+                section.innerHTML = `
+                    <h2>${e.role}</h2>
+                    <div class="team d-flex flex-wrap"></div>`;
+                roleSections[e.role] = section.querySelector(".team");
+                teamContainer.appendChild(section);
+            }
+
+            const memberDiv = document.createElement("div");
+            memberDiv.classList.add("team-member");
+            memberDiv.innerHTML = `
+                <img style="object-fit:cover; " src="${e.image}" alt="Team Member">
+                <h3>${e.title}</h3>
+                <p>${e.subDes}</p>
+                <p>${e.descripton}</p>`;
+            
+            roleSections[e.role].appendChild(memberDiv);
+        });
+    } catch (error) {
+        console.error("Error fetching events: ", error);
     }
+}
 
-    fetchData();
+fetchData();
 </script>
   <footer id="footer" class="footer position-relative">
 
